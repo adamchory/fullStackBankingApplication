@@ -1,5 +1,5 @@
 # fullStackBankingApplication
-This application allows users to create an account at an online bank where they can deposit and withdraw funds, as well as review previous transactions. There exists an admin side of the application that allows the bank to review all transactions. 
+This application allows users to create an account at an online bank where they can deposit and withdraw funds, as well as review previous transactions. There exists an admin side of the application that allows the bank to review all transactions. This application is a secure site to securely make banking decisions. 
 ## Installation Guidelines
 Clone files to your local machine under one folder. Open a terminal window at the folder, run 'npm install', and 'node index.js'
 
