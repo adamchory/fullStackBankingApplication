@@ -11,6 +11,34 @@ function CreateAccount(){
   const [isPasswordValid, setIsPasswordValid] = React.useState(false);
   const ctx                     = React.useContext(UserContext);
   const ctx_transaction         = React.useContext(transactionContext);
+  
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyCGSxC8AK6ifFjPgTLXOHXNUzV6PJeq4H8",
+    authDomain: "bankingapp-c79aa.firebaseapp.com",
+    projectId: "bankingapp-c79aa",
+    storageBucket: "bankingapp-c79aa.appspot.com",
+    messagingSenderId: "197131504320",
+    appId: "1:197131504320:web:cf3cecc294712dc8e3bb25"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  (async () => {
+    try {
+        firebase.initializeApp(firebaseConfig);
+        //if user is logged in, it persists through refreshes, this eliminates that issue
+        await firebase.auth().signOut();
+        const createUserResult = await firebase
+            .auth()
+            .createUserWithEmailAndPassword("example@mit.edu", "secret")
+            console.log('createUserResult', createUserResult)
+        firebase.auth().signOut();
+    } catch(e) {
+        console.log(e);
+    }
+})();
 
 /////START:function to handle changes in the name input box/////
   function handleNameChange (e) {
@@ -88,6 +116,12 @@ function CreateAccount(){
         // ctx.users.push({name,email,password,balance:100});
         // ctx_transaction.transactions.push({name,amount: 100,type: 'On Signup', balance:100});
         // setShow(false);
+        const auth = firebase.auth();
+        const promise = auth.createUserWithEmailAndPassword(
+            email.value,
+            password.value
+          );
+            promise.catch((e) => console.log(e.message));
 
         const url = `/account/create/${name}/${email}/${password}`;
         (async () => {

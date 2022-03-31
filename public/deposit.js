@@ -8,6 +8,7 @@ function Deposit(){
   const [balance, setBalance] = React.useState(ctx.users[ctx.users.length - 1].balance);
   const [isValid, setIsValid] = React.useState(false);
   const ctx_transaction         = React.useContext(transactionContext);
+
   let errorID = 0; //initially no errors
 
   //////////START: Function to Handle changes in the deposit input box//////////
@@ -58,9 +59,22 @@ function Deposit(){
 
   //////////START: Function to Handle deposit onClick event//////////
   function handleDeposit() {
-    ctx.users[ctx.users.length - 1].balance = balance + deposit;
+    //ctx.users[ctx.users.length - 1].balance = balance + deposit;
     setBalance(balance + deposit);
-    ctx_transaction.transactions.push({name: ctx.users[ctx.users.length - 1].name, amount: deposit,type: 'Deposit', balance: ctx.users[ctx.users.length - 1].balance});
+    //ctx_transaction.transactions.push({name: ctx.users[ctx.users.length - 1].name, amount: deposit,type: 'Deposit', balance: ctx.users[ctx.users.length - 1].balance});
+    fetch(`/account/update/${email}/${deposit}`)
+    .then(response => response.text())
+    .then(text => {
+        try {
+            const data = JSON.parse(text);
+            props.setStatus(JSON.stringify(data.value));
+            props.setShow(false);
+            console.log('JSON:', data);
+        } catch(err) {
+            props.setStatus('Deposit failed')
+            console.log('err:', text);
+        }
+    });
     setShow(false);
   }
 //////////END: Function to Handle deposit onClick event//////////

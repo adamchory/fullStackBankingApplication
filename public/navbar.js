@@ -8,7 +8,8 @@ function NavBar(){
   const [activityStyle, setActivityStyle] = React.useState({backgroundColor: null});
   const [balanceStyle, setBalanceStyle] = React.useState({backgroundColor: null});
   const [allDataStyle, setAllDataStyle] = React.useState({backgroundColor: null});
-
+  const [logoutStyle, setLogoutStyle] = React.useState({backgroundColor: null});
+  
   function handleBadBank() {
     setBadBankStyle({backgroundColor: 'green'})
     setCreateAccountStyle({backgroundColor: null});
@@ -18,6 +19,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleCreateAccount() {
     setBadBankStyle({backgroundColor: null})
@@ -28,6 +30,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleLogin() {
     setBadBankStyle({backgroundColor: null})
@@ -38,6 +41,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleDeposit() {
     setBadBankStyle({backgroundColor: null})
@@ -48,6 +52,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleWithdraw() {
     setBadBankStyle({backgroundColor: null})
@@ -58,6 +63,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleActivity() {
     setBadBankStyle({backgroundColor: null})
@@ -68,6 +74,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: 'green'});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleBalance() {
     setBadBankStyle({backgroundColor: null})
@@ -78,6 +85,7 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: 'green'});
     setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: null});
   }
   function handleAllData() {
     setBadBankStyle({backgroundColor: null})
@@ -88,6 +96,18 @@ function NavBar(){
     setActivityStyle({backgroundColor: null});
     setBalanceStyle({backgroundColor: null});
     setAllDataStyle({backgroundColor: 'green'});
+    setLogoutStyle({backgroundColor: null});
+  }
+  function handleLogout() {
+    setBadBankStyle({backgroundColor: null})
+    setCreateAccountStyle({backgroundColor: null});
+    setLoginStyle({backgroundColor: null});
+    setDepositStyle({backgroundColor: null});
+    setWithdrawStyle({backgroundColor: null});
+    setActivityStyle({backgroundColor: null});
+    setBalanceStyle({backgroundColor: null});
+    setAllDataStyle({backgroundColor: null});
+    setLogoutStyle({backgroundColor: 'green'});
   }
   return(
     <>
@@ -118,6 +138,9 @@ function NavBar(){
           </li>  
           <li className="nav-item" style={allDataStyle} onClick={handleAllData}>
             <a className="nav-link" href="#/alldata/">AllData</a>
+          </li>  
+          <li className="nav-item" style={logoutStyle} onClick={handleLogout}>
+            <a className="nav-link" href="#/logout/">Logout</a>
           </li>          
         </ul>
       </div>

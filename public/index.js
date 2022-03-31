@@ -13,6 +13,7 @@ function Spa() {
             <Route path="/activity/" component={Activity} />
             <Route path="/Balance/" component={Balance} />
             <Route path="/alldata/" component={AllData} />
+            <Route path="/logout/" component={Logout} />
           </div>
           </transactionContext.Provider>
       </UserContext.Provider>      
